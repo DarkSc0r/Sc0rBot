@@ -44,6 +44,7 @@ COGS = [
     "cogs.afk",
     "cogs.automod",
     "cogs.command_list",
+    "cogs.info",
     "cogs.leveling",
     "cogs.logs",
     "cogs.moderation",
