@@ -3,6 +3,7 @@
         "badword",
         "commandlist",
         "dotenv",
+        "pycache",
         "serverinfo"
     ]
 }
