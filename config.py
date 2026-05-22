@@ -7,6 +7,7 @@ STAFF_ROLE_ID = 1449583557084446810
 # Channels
 LOG_CHANNEL_ID = 1505340380256800938
 REPORT_CATEGORY_ID = 1506781294678380745
+WELCOME_CHANNEL_ID = 1449579101407936524
 
 # Text XP
 XP_FILE = "levels.json"
@@ -49,5 +50,6 @@ COGS = [
     "cogs.logs",
     "cogs.moderation",
     "cogs.polls",
-    "cogs.tickets"
+    "cogs.tickets",
+    "cogs.welcome"
 ]
