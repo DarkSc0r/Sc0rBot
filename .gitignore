@@ -1,5 +1,8 @@
 .env
 discord.log
 levels.json
+voice_levels.json
+
 __pycache__/
+*.pyc
 node_modules/
