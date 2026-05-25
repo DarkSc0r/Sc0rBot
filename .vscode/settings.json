@@ -1,9 +1,16 @@
 {
     "cSpell.words": [
-        "badword",
+        "cogslist",
         "commandlist",
         "dotenv",
+        "gmtime",
+        "LIGHTMAGENTA",
+        "prfx",
         "pycache",
-        "serverinfo"
+        "serverinfo",
+        "uinfo",
+        "userinfo",
+        "usinf",
+        "VIPCMDS"
     ]
 }
