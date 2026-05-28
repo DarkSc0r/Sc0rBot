@@ -12,5 +12,6 @@
         "userinfo",
         "usinf",
         "VIPCMDS"
-    ]
+    ],
+    "python.REPL.enableREPLSmartSend": false
 }

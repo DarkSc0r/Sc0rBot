@@ -16,6 +16,9 @@ class Bot(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix=commands.when_mentioned_or('.'), intents=discord.Intents().all())
         self.cogslist = [
+            "cogs.level",
+            "cogs.logger",
+            "cogs.member",
             "cogs.moderation",
             "cogs.vip"
         ]
@@ -27,7 +30,6 @@ class Bot(commands.Bot):
     async def on_ready(self):
         prfx = (Back.BLACK + Fore.LIGHTMAGENTA_EX + time.strftime("%H:%M:%S UTC", time.gmtime()) + Back.RESET + Fore.CYAN + Style.NORMAL)
         print(f"{prfx} Logged in as {Fore.RED + bot.user.name}{Fore.RESET}")
-        print(f"{prfx} Member id: {Fore.RED + settings.MEMBERS_ID}{Fore.RESET}")
         print(f"{prfx} {Fore.RED + bot.user.name}{Fore.CYAN} Online!{Fore.RESET}")
 
 with open('config.json', 'r') as f:

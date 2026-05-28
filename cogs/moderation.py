@@ -29,7 +29,7 @@ class moderation(commands.Cog):
         )
 
         embed.add_field(name="Vote", value="👍 - Yes\n\n👎 - No", inline=False)
-        poll_message = await ctx.send(content=f"<@&{settings.MEMBERS_ID}>", embed=embed)
+        poll_message = await ctx.send(content=f"<@&{settings.MEMBER_ID}>", embed=embed)
         await poll_message.add_reaction("👍")
         await poll_message.add_reaction("👎")
 
