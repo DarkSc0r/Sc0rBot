@@ -1,5 +1,6 @@
 config.json
 git_push.md
+level_info
 
 __pycache__/
 *.pyc

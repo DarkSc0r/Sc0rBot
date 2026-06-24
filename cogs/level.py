@@ -19,6 +19,8 @@ class level(commands.Cog):
     async def leaderboard(self, ctx, leaderboard_type='message'):
         leaderboard_type = leaderboard_type.lower()
 
+        await ctx.message.delete()
+
         if leaderboard_type == 'voice':
             file_name = 'users_voice.json'
             title = 'Voice Leaderboard'
@@ -103,6 +105,7 @@ class level(commands.Cog):
             )
 
         embed.set_footer(text=f'{len(sorted_users)} ranked members')
+        embed.set_footer(text=f'Requested by {ctx.author.display_name}')
 
         await ctx.send(embed=embed)
 
