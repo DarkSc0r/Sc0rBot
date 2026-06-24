@@ -20,7 +20,8 @@ class Bot(commands.Bot):
             "cogs.logger",
             "cogs.member",
             "cogs.moderation",
-            "cogs.vip"
+            "cogs.vip",
+            "cogs.welcome"
         ]
     
     async def setup_hook(self):
@@ -31,6 +32,7 @@ class Bot(commands.Bot):
         prfx = (Back.BLACK + Fore.LIGHTMAGENTA_EX + time.strftime("%H:%M:%S UTC", time.gmtime()) + Back.RESET + Fore.CYAN + Style.NORMAL)
         print(f"{prfx} Logged in as {Fore.RED + bot.user.name}{Fore.RESET}")
         print(f"{prfx} {Fore.RED + bot.user.name}{Fore.CYAN} Online!{Fore.RESET}")
+
 
 with open('config.json', 'r') as f:
     data = json.load(f)

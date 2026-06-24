@@ -37,9 +37,11 @@ class logger(commands.Cog):
         embed = discord.Embed(
             title="Audit Logger",
             description="Message Deleted",
-            color=discord.Color.from_rgb(208, 109, 3),
+            color=discord.Color.from_rgb(255, 24, 44),
             timestamp=discord.utils.utcnow()
         )
+
+        embed.set_thumbnail(url=message.author.avatar)
 
         embed.add_field(name="Message: ", value=message.content or "No Content Found", inline=False)
 
@@ -51,23 +53,40 @@ class logger(commands.Cog):
         await log_channel.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_member_join(self, member):
-        welcome_channel = member.guild.get_channel(settings.WELCOME_CHANNEL_ID)
-        rules_channel = member.guild.get_channel(settings.RULES_CHANNEL_ID)
-        get_rules_channel = member.guild.get_channel(settings.GET_ROLES_CHANNEL_ID)
+    async def on_message_edit(self, before, after):
+        if before.author.bot:
+            return
+        elif after.author.bot:
+            return
+
+        log_channel = before.guild.get_channel(settings.LOG_CHANNEL_ID)
+
+        if log_channel is None:
+            return
+
+        editor = before.author
+
+        if editor is None:
+            editor = "Unknown"
+
         embed = discord.Embed(
-            title=f"Welcome!!",
-            description=f"Glad you joined the server {member.mention}! " \
-             f"PLEASE don't forget to go to the {rules_channel.mention} channel to see our rules in this server!" \
-             f"To get access to the ENTIRE(almost) server, please make your way to the {get_rules_channel.mention} channel and fill out all the roles you want!" \
-             f"The <@&{settings.MEMBER_ID}> is how you get access!!",
-            color=discord.Color.from_rgb(72, 141, 206),
+            title="Audit Logger",
+            description="Message Edited",
+            color=discord.Color.from_rgb(208, 109, 3),
             timestamp=discord.utils.utcnow()
         )
 
-        embed.set_thumbnail(url=member.avatar)
+        embed.set_thumbnail(url=before.author.avatar)
 
-        await welcome_channel.send(embed=embed, allowed_mentions=discord.AllowedMentions(users=True))
-    
+        embed.add_field(name="Before: ", value=before.content or "No Content Found")
+        embed.add_field(name="After: ", value=after.content)
+
+        embed.add_field(name="User: ", value=before.author, inline=False)
+        embed.add_field(name="Channel: ", value=before.channel, inline=False)
+
+        embed.add_field(name="Edited By: ", value=editor, inline=False)
+
+        await log_channel.send(embed=embed)
+
 async def setup(bot:commands.Bot):
     await bot.add_cog(logger(bot))

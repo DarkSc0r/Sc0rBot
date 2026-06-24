@@ -34,11 +34,14 @@ class vip(commands.Cog):
         )
 
         embed.set_thumbnail(url=member.avatar)
+        
         embed.add_field(name="Name:", value=f"{member.name}")
         embed.add_field(name="Created At:", value=member.created_at.strftime("%a - %B %#d, %Y || %I:%M %p "))
         embed.add_field(name="Joined At:", value=member.joined_at.strftime("%a - %B %#d, %Y || %I:%M %p "))
+        
         embed.add_field(name=f"Roles ({len(roles)}):", value=" ".join([role.mention for role in roles]))
         embed.add_field(name="Top Role:", value=member.top_role.mention)
+        
         embed.add_field(name="Bot?", value=member.bot)
 
         await ctx.send(embed=embed)

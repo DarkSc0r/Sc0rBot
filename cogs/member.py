@@ -33,5 +33,9 @@ class member(commands.Cog):
         " Exploring enough structures will get you the ultimate recipe. The Creation Recipe." \
         " This is the way to 'beat' the game. It tells the player how to re-create life.")
 
+    # @commands.command(aliases='lb')
+    # async def leaderboard(self):
+    #     ...
+
 async def setup(bot:commands.Bot):
     await bot.add_cog(member(bot))
